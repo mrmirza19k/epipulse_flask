@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EpiPulse AI — Outbreak Surveillance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="/static/css/chat.css" />
+</head>
+<body>
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">🦠</span>
+      <div>
+        <div class="logo-title">EpiPulse AI</div>
+        <div class="logo-sub">Outbreak Surveillance</div>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+
+    <div class="control-group">
+      <label class="control-label">🔬 Disease</label>
+      <select id="sel-disease" class="control-select"></select>
+    </div>
+    <div class="control-group">
+      <label class="control-label">📍 District</label>
+      <select id="sel-district" class="control-select"></select>
+    </div>
+    <div class="control-group">
+      <label class="control-label">📅 Forecast Horizon</label>
+      <div class="horizon-btns" id="horizon-btns">
+        <button class="horizon-btn active" data-val="7">7d</button>
+        <button class="horizon-btn" data-val="14">14d</button>
+        <button class="horizon-btn" data-val="30">30d</button>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">📆 Date Range</label>
+      <input type="date" id="date-start" class="control-input" />
+      <input type="date" id="date-end" class="control-input" style="margin-top:6px;" />
+    </div>
+
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-footer">v1.0 · EpiPulse AI Team</div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main" id="main">
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <button class="menu-btn" id="menu-btn">☰</button>
+      <div class="topbar-title">
+        <span class="topbar-icon">🦠</span> EpiPulse AI
+        <span class="topbar-sub">Intelligent Disease Outbreak Analyzer</span>
+      </div>
+      <div class="topbar-right">
+        <div class="live-badge">● LIVE</div>
+      </div>
+    </header>
+
+    <!-- STATUS BANNER -->
+    <div class="status-banner" id="status-banner">
+      <span id="status-icon">🛰️</span>
+      <span id="status-text">Loading system status...</span>
+    </div>
+
+    <!-- KPI CARDS -->
+    <div class="kpi-grid" id="kpi-grid">
+      <div class="kpi-card" id="kpi-cases">
+        <div class="kpi-value" id="kpi-cases-val">—</div>
+        <div class="kpi-label">Total Cases (7d)</div>
+        <div class="kpi-delta" id="kpi-cases-delta">—</div>
+      </div>
+      <div class="kpi-card" id="kpi-hosp">
+        <div class="kpi-value" id="kpi-hosp-val">—</div>
+        <div class="kpi-label">Hospitalizations</div>
+        <div class="kpi-delta">Last 7 days</div>
+      </div>
+      <div class="kpi-card" id="kpi-districts">
+        <div class="kpi-value" id="kpi-districts-val">—</div>
+        <div class="kpi-label">Active Districts</div>
+        <div class="kpi-delta">Reporting cases</div>
+      </div>
+      <div class="kpi-card" id="kpi-risk">
+        <div class="kpi-value" id="kpi-risk-val" style="font-size:1.1rem;">—</div>
+        <div class="kpi-label">Highest Risk</div>
+        <div class="kpi-delta">by case volume</div>
+      </div>
+      <div class="kpi-card" id="kpi-disease">
+        <div class="kpi-value" id="kpi-disease-val" style="font-size:1.1rem;">—</div>
+        <div class="kpi-label">Leading Disease</div>
+        <div class="kpi-delta">most active</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="trends">📈 Trends & Anomalies</button>
+      <button class="tab-btn" data-tab="forecast">🔮 Forecasting</button>
+      <button class="tab-btn" data-tab="risk">⚠️ Risk Scores</button>
+      <button class="tab-btn" data-tab="geo">🗺️ Geo Heatmap</button>
+      <button class="tab-btn" data-tab="alerts">🚨 Alerts</button>
+      <button class="tab-btn" data-tab="analytics">📊 Analytics</button>
+       <!-- Disease Prediction AI Link -->
+  <a 
+    href="https://disease-prediction-system-mrmirza19k.streamlit.app"
+    target="_blank"
+    class="tab-btn"
+    style="text-decoration: none;"
+  >
+    🤖 Disease Prediction AI
+  </a>
+    </nav>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content">
+
+      <!-- TAB: TRENDS -->
+      <div class="tab-pane active" id="tab-trends">
+        <div class="section-header" id="trends-header">📈 Trend & Anomaly Detection</div>
+        <div id="chart-trends" class="chart-box"></div>
+        <div class="section-header" style="margin-top:1.5rem;">🔍 Anomaly Summary</div>
+        <div id="anomaly-table" class="table-wrap"></div>
+      </div>
+
+      <!-- TAB: FORECAST -->
+      <div class="tab-pane" id="tab-forecast">
+        <div class="section-header" id="forecast-header">🔮 Outbreak Forecast</div>
+        <div id="chart-forecast" class="chart-box"></div>
+        <div class="section-header" style="margin-top:1.5rem;">📐 Model Evaluation</div>
+        <div id="metrics-table" class="table-wrap"></div>
+        <div class="section-header" style="margin-top:1.5rem;">📋 Forecast Values</div>
+        <div id="forecast-table" class="table-wrap"></div>
+      </div>
+
+      <!-- TAB: RISK -->
+      <div class="tab-pane" id="tab-risk">
+        <div class="section-header" id="risk-header">⚠️ District Risk Assessment</div>
+        <div class="two-col">
+          <div id="chart-gauge" class="chart-box" style="min-height:320px;"></div>
+          <div id="chart-risk-bar" class="chart-box" style="min-height:320px;"></div>
+        </div>
+        <div id="surge-info" class="surge-box"></div>
+        <div class="section-header" style="margin-top:1.5rem;">📊 Risk Score Breakdown</div>
+        <div id="risk-table" class="table-wrap"></div>
+        <div class="section-header" style="margin-top:1.5rem;">🎯 Risk Component Radar</div>
+        <div id="chart-radar" class="chart-box"></div>
+      </div>
+
+      <!-- TAB: GEO -->
+      <div class="tab-pane" id="tab-geo">
+        <div class="section-header" id="geo-header">🗺️ Geographic Risk Distribution</div>
+        <div id="chart-map" class="chart-box" style="min-height:480px;"></div>
+        <div class="two-col" style="margin-top:1rem;">
+          <div>
+            <div class="section-header">📍 Cases by District</div>
+            <div id="chart-treemap" class="chart-box"></div>
+          </div>
+          <div>
+            <div class="section-header">🌡️ Spread Trajectory</div>
+            <div id="chart-spread" class="chart-box"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB: ALERTS -->
+      <div class="tab-pane" id="tab-alerts">
+        <div class="section-header" id="alerts-header">🚨 Active Alerts</div>
+        <div class="alert-filter" id="alert-filter">
+          <span class="filter-label">Filter:</span>
+          <button class="filter-btn active" data-level="Critical">🔴 Critical</button>
+          <button class="filter-btn active" data-level="High">🟠 High</button>
+          <button class="filter-btn active" data-level="Moderate">🟡 Moderate</button>
+          <button class="filter-btn active" data-level="Low">🟢 Low</button>
+        </div>
+        <div id="alerts-container"></div>
+        <div class="section-header" style="margin-top:2rem;">🌐 Cross-Disease Risk Heatmap</div>
+        <div id="chart-crossdisease" class="chart-box"></div>
+      </div>
+
+      <!-- TAB: ANALYTICS -->
+      <div class="tab-pane" id="tab-analytics">
+        <div class="section-header">📊 Advanced Analytics</div>
+        <div class="two-col">
+          <div>
+            <div class="section-header-sm">Disease Distribution</div>
+            <div id="chart-pie" class="chart-box"></div>
+          </div>
+          <div>
+            <div class="section-header-sm">Monthly Cases by Disease</div>
+            <div id="chart-monthly" class="chart-box"></div>
+          </div>
+        </div>
+        <div class="section-header" style="margin-top:1.5rem;">🔗 Environmental Correlation</div>
+        <div id="chart-corr" class="chart-box"></div>
+        <div class="section-header" style="margin-top:1.5rem;">🏥 Hospital Burden Analysis</div>
+        <div class="two-col">
+          <div>
+            <div id="chart-hosp" class="chart-box"></div>
+          </div>
+          <div>
+            <div class="section-header-sm">Test Positivity Rate</div>
+            <div id="chart-posrate" class="chart-box"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Initializing EpiPulse AI...</div>
+  </div>
+
+  <!-- ── AI CHAT WIDGET ─────────────────────────────────────────────────── -->
+  <div id="chat-widget">
+    <!-- Toggle button -->
+    <button id="chat-toggle" title="Ask Disease related">
+      <span id="chat-toggle-icon">⁉️</span>
+      <span id="chat-toggle-label">Ask AI</span>
+      <span id="chat-unread" class="chat-unread hidden">1</span>
+    </button>
+
+    <!-- Chat panel -->
+    <div id="chat-panel" class="chat-panel hidden">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <span class="chat-avatar">🦠</span>
+          <div>
+            <div class="chat-title">EpiPulse AI Assistant</div>
+            <div class="chat-status"><span class="chat-online-dot"></span> Online</div>
+          </div>
+        </div>
+        <button id="chat-close" class="chat-close-btn">✕</button>
+      </div>
+
+      <div class="chat-messages" id="chat-messages">
+        <div class="chat-msg bot">
+          <div class="chat-bubble">
+            👋 Hello! I'm <strong>Tabrej</strong>. Your disease assistant.<br><br>
+            Ask me only disease related questions.
+          </div>
+          <div class="chat-time">Just now</div>
+        </div>
+      </div>
+
+      <div class="chat-suggestions" id="chat-suggestions">
+        <button class="suggestion-chip" data-msg="What is covid?">🔥What is covid?</button>
+        <button class="suggestion-chip" data-msg="Dengue Symptoms?">Dengue Symptoms?</button>
+        <button class="suggestion-chip" data-msg="Malaria details with Symptoms ?">Malaria details with Symptoms ?</button>
+      </div>
+
+      <div class="chat-input-row">
+        <textarea id="chat-input" class="chat-input" placeholder="Ask about outbreaks, risks, forecasts..." rows="1"></textarea>
+        <button id="chat-send" class="chat-send-btn" title="Send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- ── END CHAT WIDGET ────────────────────────────────────────────────── -->
+
+  <script src="/static/js/app.js"></script>
+  <script src="/static/js/chat.js"></script>
+</body>
+</html>
