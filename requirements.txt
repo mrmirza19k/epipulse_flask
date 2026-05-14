@@ -5,3 +5,4 @@ plotly
 requests
 gunicorn
 scikit-learn
+joblib
