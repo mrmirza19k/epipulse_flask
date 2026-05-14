@@ -31,6 +31,8 @@ EpiPulse AI is a full-stack web application for monitoring and predicting diseas
 ```
 EpiPulse/
 ├── app.py                        # Flask backend & API routes
+├── requirements.txt
+├── README.md
 ├── data/
 │   ├── generate_data.py          # Synthetic epidemic data generator
 │   └── epidemic_data.csv         # Generated/cached dataset
