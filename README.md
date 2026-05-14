@@ -67,8 +67,8 @@ EpiPulse/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/EpiPulse.git
-cd EpiPulse
+git clone (https://github.com/mrmirza19k/epipulse_flask).git
+cd epipulse_flask
 
 # 2. Create and activate a virtual environment (recommended)
 python -m venv venv
