@@ -144,19 +144,21 @@ Punjab Districts:
 
 ### Dashboard Overview
 
-(Add Screenshot Here)
+![Dashboard](image/Dashboard)
 
 ### Forecast Analytics
 
-(Add Screenshot Here)
+![Forecast Analytics](image/Forecast Analytics)
 
 ### Risk Monitoring
 
-(Add Screenshot Here)
+![Risk Monitoring](image/Risk Monitoring)
 
 ### Interactive Charts
 
 ![Chatbot Screenshot](image/Chatbot)
+
+![Chatbot Screenshot](image/Chatbot.response)
 
 ---
 
