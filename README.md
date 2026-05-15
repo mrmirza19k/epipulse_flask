@@ -156,7 +156,7 @@ Punjab Districts:
 
 ### Interactive Charts
 
-image/Chatbot
+![Chatbot Screenshot](image/Chatbot)
 
 ---
 
