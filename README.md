@@ -172,6 +172,12 @@ EpiPulse/
 ├── data/
 │   ├── generate_data.py
 │   └── epidemic_data.csv
+├── image/
+│   ├── Dashboard.png
+│   ├── forecasting.png
+│   ├── risk.png
+│   ├── Chatbot.png
+│   └── Chatbot.response.png
 ├── modules/
 │   ├── __init__.py
 │   ├── preprocessing.py
