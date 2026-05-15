@@ -148,7 +148,7 @@ Punjab Districts:
 
 ### Forecast Analytics
 
-![Forecast Analytics](image/Forecasting)
+![Forecast](image/forecasting)
 
 ### Risk Monitoring
 
