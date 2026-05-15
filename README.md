@@ -1,57 +1,191 @@
-# 🦠 EpiPulse AI — Outbreak Surveillance Dashboard
+# 🦠 EpiPulse AI — Intelligent Disease Outbreak Surveillance Dashboard
 
-> **Intelligent Disease Outbreak Early Trend Analyzer**  
-> Real-time epidemic surveillance powered by ARIMA forecasting, anomaly detection, and composite risk scoring — built on Flask + Vanilla JS + Plotly.js.
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=for-the-badge\&logo=python)
+![Flask](https://img.shields.io/badge/Flask-Web_App-black?style=for-the-badge\&logo=flask)
+![Machine Learning](https://img.shields.io/badge/AI%2FML-Forecasting-green?style=for-the-badge)
+![Render](https://img.shields.io/badge/Deployment-Render-purple?style=for-the-badge)
+
+Real-time epidemic surveillance powered by ARIMA forecasting, anomaly detection, and composite risk scoring — built on Flask + Vanilla JS + Plotly.js.
 
 ---
 
-## 📸 Overview
+## 🌐 Live Demo
 
-EpiPulse AI is a full-stack web application for monitoring and predicting disease outbreaks across districts. It ingests daily case-level surveillance data, detects anomalies, forecasts multi-model outbreak trajectories, and generates automated risk alerts — all rendered in an interactive dark-themed dashboard.
+👉 [Open EpiPulse AI Dashboard](https://epipulse-flask.onrender.com/)
 
-**Tracked Diseases:** Dengue · Influenza · Malaria · COVID-19 · Chikungunya  
-**Coverage Area:** 10 districts across Punjab (Ludhiana, Amritsar, Jalandhar, Patiala, Sangrur, Bathinda, Mohali, Hoshiarpur, Gurdaspur, Firozpur)
+🔗 GitHub Repository: [https://github.com/mrmirza19k/epipulse_flask](https://github.com/mrmirza19k/epipulse_flask)
+
+---
+
+## 📌 Project Overview
+
+EpiPulse AI is a full-stack AI-powered outbreak surveillance and forecasting platform designed to monitor disease trends, detect anomalies, predict future outbreaks, and generate automated health risk alerts.
+
+The platform provides interactive analytics dashboards for tracking disease spread across multiple districts in Punjab using machine learning models, statistical forecasting, and intelligent risk analysis.
+
+### 🎯 Key Objectives
+
+* Predict disease outbreaks early
+* Detect unusual spikes in cases
+* Analyze district-level risks
+* Generate automated health alerts
+* Visualize epidemic trends interactively
+* Support epidemic monitoring and healthcare analytics
 
 ---
 
 ## ✨ Features
 
-- **Multi-Model Forecasting** — ARIMA (via statsmodels), Prophet-style trend, LSTM-like neural net (sklearn), and Ensemble with confidence intervals
-- **Anomaly Detection** — Z-score, IQR, Isolation Forest, and STL decomposition for outbreak spike detection
-- **Composite Risk Scoring** — Weighted risk engine across trend velocity, environmental factors, geographic density, and anomaly flags
-- **Automated Alerts** — Natural language alert summaries with 4-tier urgency levels (🟢 Low → 🔴 Critical)
-- **District Risk Map** — Geo-tagged risk visualization per district per disease
-- **Interactive Chat Interface** — AI-style conversational query panel alongside the main dashboard
-- **Synthetic Data Generator** — Realistic epidemic data with seasonal patterns and Gaussian outbreak bursts for demo/testing
+### 📈 Multi-Model Forecasting
+
+* ARIMA forecasting using statsmodels
+* Prophet-style trend forecasting
+* LSTM-like neural forecasting using sklearn
+* Ensemble forecasting with confidence intervals
+
+### 🚨 Anomaly Detection
+
+* Z-score spike detection
+* IQR-based anomaly detection
+* Isolation Forest outlier detection
+* STL decomposition residual analysis
+
+### 🧠 Composite Risk Scoring
+
+Weighted outbreak risk engine based on:
+
+* Trend velocity
+* Environmental factors
+* Population density
+* Anomaly detection flags
+
+### 🔔 Automated Alerts
+
+* Natural language outbreak alerts
+* 4-tier urgency levels
+* Suggested action recommendations
+
+### 🗺️ District Risk Visualization
+
+* Geo-tagged district-level monitoring
+* Disease-specific risk analysis
+
+### 💬 Interactive Chat Interface
+
+AI-style conversational dashboard assistant integrated into the UI.
+
+### 🧪 Synthetic Data Generator
+
+Realistic epidemic data generation with:
+
+* Seasonal patterns
+* Gaussian outbreak bursts
+* Environmental factors
+* Multi-disease simulation
+
+---
+
+## 🧠 AI/ML Features
+
+✅ ARIMA Forecasting
+✅ Ensemble Prediction Models
+✅ Isolation Forest Anomaly Detection
+✅ Trend Analysis
+✅ Composite Risk Engine
+✅ Automated Alert Generation
+✅ Time-Series Analytics
+
+---
+
+## 🛠 Tech Stack
+
+| Technology          | Purpose            |
+| ------------------- | ------------------ |
+| Python              | Backend Logic      |
+| Flask               | Web Framework      |
+| Pandas              | Data Processing    |
+| Scikit-Learn        | ML Algorithms      |
+| Statsmodels         | ARIMA Forecasting  |
+| Plotly.js           | Interactive Charts |
+| HTML/CSS/JavaScript | Frontend           |
+| Jinja2              | Templating Engine  |
+| Render              | Deployment         |
+
+---
+
+## 📊 Supported Diseases
+
+* Dengue
+* Influenza
+* Malaria
+* COVID-19
+* Chikungunya
+
+---
+
+## 📍 Coverage Area
+
+Punjab Districts:
+
+* Ludhiana
+* Amritsar
+* Jalandhar
+* Patiala
+* Sangrur
+* Bathinda
+* Mohali
+* Hoshiarpur
+* Gurdaspur
+* Firozpur
+
+---
+
+## 📸 Project Screenshots
+
+### Dashboard Overview
+
+(Add Screenshot Here)
+
+### Forecast Analytics
+
+(Add Screenshot Here)
+
+### Risk Monitoring
+
+(Add Screenshot Here)
+
+### Interactive Charts
+
+(Add Screenshot Here)
 
 ---
 
 ## 🗂️ Project Structure
 
-```
+```bash
 EpiPulse/
-├── app.py                        # Flask backend & API routes
+├── app.py
 ├── requirements.txt
 ├── README.md
 ├── data/
-│   ├── generate_data.py          # Synthetic epidemic data generator
-│   └── epidemic_data.csv         # Generated/cached dataset
+│   ├── generate_data.py
+│   └── epidemic_data.csv
 ├── modules/
 │   ├── __init__.py
-│   ├── preprocessing.py          # Data cleaning, rolling averages, lag features
-│   ├── anomaly_detection.py      # Z-score, IQR, Isolation Forest, STL
-│   ├── prediction.py             # ARIMA, LSTM-like, Ensemble forecasting
-│   ├── risk_scoring.py           # Composite outbreak risk engine
-│   └── alert_generator.py        # NL alert message generator
+│   ├── preprocessing.py
+│   ├── anomaly_detection.py
+│   ├── prediction.py
+│   ├── risk_scoring.py
+│   └── alert_generator.py
 ├── static/
 │   ├── css/
-│   │   ├── style.css             # Main dark-theme dashboard styles
-│   │   └── chat.css              # Chat panel styles
+│   │   ├── style.css
+│   │   └── chat.css
 │   └── js/
-│       ├── app.js                # Core frontend logic & Plotly charts
-│       └── chat.js               # Chat interface controller
+│       ├── app.js
+│       └── chat.js
 └── templates/
-    └── index.html                # Main Jinja2 template
+    └── index.html
 ```
 
 ---
@@ -60,152 +194,228 @@ EpiPulse/
 
 ### Prerequisites
 
-- Python 3.9+
-- pip
+* Python 3.9+
+* pip
 
-### Installation
+---
+
+## ⚙️ Installation
 
 ```bash
-# 1. Clone the repository
-git clone (https://github.com/mrmirza19k/epipulse_flask).git
+git clone https://github.com/mrmirza19k/epipulse_flask.git
+
 cd epipulse_flask
 
-# 2. Create and activate a virtual environment (recommended)
+# Create virtual environment
 python -m venv venv
-source venv/bin/activate        # Linux/macOS
-venv\Scripts\activate           # Windows
 
-# 3. Install dependencies
+# Activate virtual environment
+# Linux/macOS
+source venv/bin/activate
+
+# Windows
+venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
 
-# 4. Run the Flask development server
+# Run Flask server
 python app.py
 ```
 
-Open your browser at **http://localhost:5000**
+Open your browser at:
 
-> **Note:** On first launch, EpiPulse auto-generates `data/epidemic_data.csv` with 180 days of synthetic surveillance data across all districts and diseases. Subsequent launches reuse the cached file.
+```bash
+http://localhost:5000
+```
 
 ---
 
 ## 🔌 API Reference
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/` | Renders the main dashboard |
-| `GET` | `/api/meta` | Available diseases, districts, and date range |
-| `GET` | `/api/summary` | Aggregated summary statistics (supports `?start=&end=`) |
-| `GET` | `/api/trends` | Time-series cases + anomaly summary (`?district=&disease=&start=&end=`) |
-| `GET` | `/api/forecast` | Multi-model forecasts + backtesting metrics (`?district=&disease=&horizon=14`) |
-| `GET` | `/api/risk` | District-level risk map with geo-coordinates (`?disease=`) |
-| `GET` | `/api/alerts` | Auto-generated NL alert messages per district/disease |
-| `GET` | `/api/status` | System-level status summary |
+| Method | Endpoint      | Description                    |
+| ------ | ------------- | ------------------------------ |
+| GET    | /             | Render dashboard               |
+| GET    | /api/meta     | Diseases & districts metadata  |
+| GET    | /api/summary  | Aggregated outbreak summary    |
+| GET    | /api/trends   | Time-series trends & anomalies |
+| GET    | /api/forecast | Forecast predictions           |
+| GET    | /api/risk     | District-level risk map        |
+| GET    | /api/alerts   | Generated outbreak alerts      |
+| GET    | /api/status   | System status summary          |
 
 ---
 
-## 🧠 Module Details
+## 🧩 Module Details
 
-### `modules/preprocessing.py`
-Cleans raw case data, generates rolling averages (7-day, 14-day), computes lag features, and extracts district-disease time-series slices.
+### modules/preprocessing.py
 
-### `modules/anomaly_detection.py`
-Runs four detection strategies in parallel:
-- **Z-score** — flags values beyond a configurable σ threshold
-- **IQR** — interquartile-range-based spike detection
-- **Isolation Forest** — unsupervised ML outlier isolation (scikit-learn)
-- **STL Decomposition** — seasonal-trend decomposition residual analysis
+* Data cleaning
+* Rolling averages
+* Lag feature generation
+* Time-series extraction
 
-### `modules/prediction.py`
-Implements multi-model outbreak forecasting with backtesting:
-- **ARIMA(2,1,2)** via `statsmodels` (falls back to linear trend on failure)
-- **LSTM-like** sequence model using `sklearn` MLPRegressor with sliding windows
-- **Ensemble** — weighted average of ARIMA + LSTM outputs
+### modules/anomaly_detection.py
 
-### `modules/risk_scoring.py`
-Computes a 0–100 composite risk score per district-disease pair:
+Implements:
 
-| Factor | Weight |
-|--------|--------|
-| Case growth rate trend | 35% |
-| Environmental (humidity, rainfall, temperature) | 25% |
-| Geographic / population density | 20% |
-| Anomaly detection flags | 20% |
+* Z-score analysis
+* IQR detection
+* Isolation Forest
+* STL decomposition
 
-Risk levels: **Low** (0–30) · **Moderate** (30–60) · **High** (60–80) · **Critical** (80–100)
+### modules/prediction.py
 
-### `modules/alert_generator.py`
-Generates human-readable outbreak alerts with urgency labels, emoji indicators, growth statistics, surge estimates, and recommended actions per district/disease combination.
+Forecasting models:
 
----
+* ARIMA(2,1,2)
+* LSTM-like MLPRegressor
+* Ensemble forecasting
 
-## 🎨 Frontend Stack
+### modules/risk_scoring.py
 
-| Technology | Role |
-|------------|------|
-| **Jinja2** | Server-side HTML templating |
-| **Plotly.js 2.32** | Interactive time-series, forecast, and risk charts |
-| **Space Grotesk** | UI font |
-| **JetBrains Mono** | Monospace / data font |
-| **Vanilla JS** | State management, API calls, chart rendering |
+Computes outbreak risk score based on:
 
-The dashboard uses a custom dark design system with CSS variables:
-- Background: `#070d17` · Card: `#0d1b2a` · Primary: `#00d4ff`
-- Risk palette: Low `#2ecc71` · Moderate `#f39c12` · High `#e67e22` · Critical `#e74c3c`
+| Factor                | Weight |
+| --------------------- | ------ |
+| Case Growth Trend     | 35%    |
+| Environmental Factors | 25%    |
+| Population Density    | 20%    |
+| Anomaly Flags         | 20%    |
+
+Risk Levels:
+
+* Low (0–30)
+* Moderate (30–60)
+* High (60–80)
+* Critical (80–100)
+
+### modules/alert_generator.py
+
+Generates:
+
+* Human-readable alerts
+* Urgency levels
+* Growth statistics
+* Recommended actions
 
 ---
 
 ## 📊 Synthetic Data Schema
 
-The data generator produces records with the following fields:
-
-| Column | Type | Description |
-|--------|------|-------------|
-| `date` | datetime | Daily observation date |
-| `district` | str | Punjab district name |
-| `disease` | str | Disease name |
-| `cases` | int | Daily confirmed cases |
-| `hospitalizations` | int | Daily hospitalizations |
-| `tests_conducted` | int | Tests performed |
-| `positive_rate` | float | Positivity rate (%) |
-| `temperature` | float | Daily avg temperature (°C) |
-| `humidity` | float | Relative humidity (%) |
-| `rainfall_mm` | float | Rainfall in mm |
-| `population` | int | District population |
-| `population_density` | float | People per km² |
+| Column             | Type     | Description            |
+| ------------------ | -------- | ---------------------- |
+| date               | datetime | Daily observation date |
+| district           | str      | Punjab district        |
+| disease            | str      | Disease name           |
+| cases              | int      | Daily cases            |
+| hospitalizations   | int      | Daily hospitalizations |
+| tests_conducted    | int      | Tests performed        |
+| positive_rate      | float    | Positivity rate        |
+| temperature        | float    | Average temperature    |
+| humidity           | float    | Relative humidity      |
+| rainfall_mm        | float    | Rainfall in mm         |
+| population         | int      | Population             |
+| population_density | float    | Population density     |
 
 ---
 
-## ⚙️ Configuration
+## 🎨 Frontend Design
 
-All major parameters are set as constants at the top of each module:
+### UI Technologies
 
-- **Forecast horizon:** `horizon` query param (default: 14 days)
-- **ARIMA order:** `(2, 1, 2)` in `prediction.py`
-- **Risk weights:** `WEIGHTS` dict in `risk_scoring.py`
-- **Anomaly thresholds:** `threshold` param in `anomaly_detection.py`
-- **Data generation:** `days=180`, `seed=42` in `generate_data.py`
+* Plotly.js interactive charts
+* Dark-theme dashboard
+* Vanilla JavaScript state management
+* Responsive analytics interface
+
+### Theme Colors
+
+* Background: #070d17
+* Card: #0d1b2a
+* Primary: #00d4ff
+
+### Risk Palette
+
+* Low → #2ecc71
+* Moderate → #f39c12
+* High → #e67e22
+* Critical → #e74c3c
+
+---
+
+## ☁️ Deployment
+
+The application is deployed on Render.
+
+🔗 Live Application:
+[https://epipulse-flask.onrender.com/](https://epipulse-flask.onrender.com/)
+
+---
+
+## 📈 Future Improvements
+
+* Real-time health API integration
+* GIS heatmap visualization
+* Mobile responsive optimization
+* Deep learning forecasting models
+* Government healthcare dataset integration
+* User authentication system
+* Exportable reports & analytics
 
 ---
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m "Add your feature"`
-4. Push to the branch: `git push origin feature/your-feature`
+2. Create a feature branch
+
+```bash
+git checkout -b feature/your-feature
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Add your feature"
+```
+
+4. Push to GitHub
+
+```bash
+git push origin feature/your-feature
+```
+
 5. Open a Pull Request
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License.
 
 ---
 
 ## 🙏 Acknowledgements
 
-- [statsmodels](https://www.statsmodels.org/) — ARIMA implementation
-- [scikit-learn](https://scikit-learn.org/) — Isolation Forest & MLP
-- [Plotly.js](https://plotly.com/javascript/) — Interactive charting
-- [Flask](https://flask.palletsprojects.com/) — Web framework
+* statsmodels — ARIMA implementation
+* scikit-learn — Isolation Forest & MLP
+* Plotly.js — Interactive charting
+* Flask — Web framework
+
+---
+
+## 👨‍💻 Author
+
+### Tabrej Ansari
+
+Final Year B.Tech CSE Student
+Aspiring AI & Data Analytics Enthusiast
+
+🔗 GitHub: [https://github.com/mrmirza19k](https://github.com/mrmirza19k)
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub.
